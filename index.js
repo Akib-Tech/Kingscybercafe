@@ -14,7 +14,7 @@ async function start() {
 
 start();
 app.get("/",(req,res) => {
-    res.render("Hello World");
+      res.json({ info: 'Node.js, Express, and Postgres API' })
 })
 
 
