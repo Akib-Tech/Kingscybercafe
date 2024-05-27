@@ -12,7 +12,7 @@ async function start() {
     await runDb.runDbQuery();
 }
 
-start();
+
 app.get("/",(req,res) => {
       res.json({ info: 'Node.js, Express, and Postgres API' })
 })
@@ -21,6 +21,7 @@ app.get("/",(req,res) => {
 /*  USER REGISTRATION, EDIT AND DELETE CODE */
 
 app.post("/user", async (req,res) => {
+    start();
   const create = await admin.createUser(req.body);
   res.status(201).json(create)
  } );
