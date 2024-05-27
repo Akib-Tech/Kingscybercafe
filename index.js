@@ -13,6 +13,11 @@ async function start() {
 }
 
 start();
+app.get("/",(req,res) => {
+    res.render("Hello World");
+})
+
+
 /*  USER REGISTRATION, EDIT AND DELETE CODE */
 
 app.post("/user", async (req,res) => {
