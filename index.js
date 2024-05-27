@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 async function start() {
     await runDb.runDbQuery();
 }
-
+start();
 
 app.get("/",(req,res) => {
       res.json({ info: 'Node.js, Express, and Postgres API' })
