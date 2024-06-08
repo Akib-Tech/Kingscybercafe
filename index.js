@@ -11,13 +11,24 @@ const port = process.env.PORT || 5000;
 async function start() {
     await runDb.runDbQuery();
 }
-
 start();
+
+app.get("/",(req,res) => {
+      res.json({ info: 'Node.js, Express, and Postgres API' })
+})
+
+
 /*  USER REGISTRATION, EDIT AND DELETE CODE */
 
 app.post("/user", async (req,res) => {
+<<<<<<< HEAD
   const data = await admin.createUser(req.body);
   res.status(201).send(data)
+=======
+    
+  const create = await admin.createUser(req.body);
+  res.status(201).json(create)
+>>>>>>> 4a1f19447e402e0211f64ef0d72df201461e42fe
  } );
 
 app.get("/user",async (req,res)  => {
