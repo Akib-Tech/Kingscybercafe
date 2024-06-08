@@ -1,11 +1,11 @@
 //const client = require('./db.js');
 const Pool = require('pg').Pool;
 const client = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Kingswebsite',
-  password: 'Ibraheem@201',
-  port: 5432,
+    user: 'postgres',
+    host: 'localhost',
+    database: 'Kingswebsite',
+    password: 'Ibraheem@201',
+    port: 5432
 });
 const dbCreation = require('./kingwebsite.js');
 

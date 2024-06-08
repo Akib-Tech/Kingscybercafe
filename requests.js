@@ -24,6 +24,40 @@ const createUser = async ( {fullname,number,username,email,password} ) => {
  }
   }
   
+  const listUser = async () => {
+    try{
+     const client = await pool.connect();
+     try{
+     const createUserQuery = "SELECT * FROM profile";
+     const res = await client.query(createUserQuery);
+       return {status : "success", data : res.rows};
+   
+     } finally {
+       client.release();
+     }
+   
+    } catch (err) {
+     return {status : "error",message : err.message}
+    }
+     }
+
+     const eachUser = async ({email}) => {
+      try{
+       const client = await pool.connect();
+       try{
+       const getEachUser = "SELECT * FROM profile WHERE email LIKE %$1%";
+       const res = await client.query(getEachUser,[email]);
+         return {status : "success", data : res.rows};
+       } finally {
+         client.release();
+       }
+     
+      }catch(err) {
+       return {status : "error",message : err.message}
+      }
+       }
+  
+
   const editUser = async (email, {fullname,number,username,password}) => {
     try{
       const client = await pool.connect();
@@ -220,7 +254,7 @@ client.release();
      }
   }
   
-  const transactionHistory = async (id) => {
+  const transactionHistory = async () => {
     try{
       const client = await pool.connect();
       try{
@@ -274,7 +308,7 @@ const login = async ({email,password}) => {
 
 }
   module.exports = {
-    createUser,editUser,totalSales,
+    createUser,listUser,eachUser,editUser,totalSales,
     totalRevenue,totalOrder,totalUsers,
     allUserMessage,eachUserMessage,sendMessage,usersTransaction,
     viewProfile,transactionHistory,deleteUser,insertTrans,login}

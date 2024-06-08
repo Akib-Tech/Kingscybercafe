@@ -20,6 +20,10 @@ app.post("/user", async (req,res) => {
   res.status(201).json(create)
  } );
 
+ app.get("/user", async (req,res) => {
+  const credential = await admin.login(req.body);
+  res.status(201).json(credential)
+ } );
 
 
 app.put("/user/:email", async (req,res) => {
